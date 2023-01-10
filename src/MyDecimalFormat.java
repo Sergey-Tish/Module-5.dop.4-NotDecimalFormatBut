@@ -1,15 +1,20 @@
 import java.util.Scanner;
 
 public class MyDecimalFormat {
-    private int inputInt = 12345678;
+    private final int inputInt;
+    static String stringInt;
 
     public MyDecimalFormat() {
+        System.out.println("vvedite chislo:");
         Scanner sc = new Scanner(System.in);
         inputInt = sc.nextInt();
         sc.close();
+        stringInt = "" + inputInt;
     }
+
     public MyDecimalFormat(int inputInt) {
         this.inputInt = inputInt;
+        stringInt = "" + inputInt;
     }
 
     public int getInputInt() {
@@ -17,14 +22,38 @@ public class MyDecimalFormat {
     }
 
     public void printInFormat() {
-        String stringInt = "" + inputInt;
-        String[] inFormat = new String[(stringInt.length()-1)];
-        for (int i = 1; i <= stringInt.length(); i++) {
-            //inFormat[i] = String.valueOf(stringInt.charAt(i));
-            System.out.print(String.valueOf(stringInt.charAt(i-1)));
-            if (i%3 == 0) {
-                System.out.print(",");
-            }
+
+        int i = 0;
+        int k = 1;
+        if (stringInt.length() % 3 == 1) {
+            i = IncrementIAndPrintNumber(i);
+            printThePoint();
+        } else if (stringInt.length() % 3 == 2) {
+            i = IncrementIAndPrintNumber(i);
+            i = IncrementIAndPrintNumber(i);
+            printThePoint();
         }
+        while (i < stringInt.length()) {
+            printStringIntCharAt(i);
+            if ((k) % 3 == 0 && (i+1) < stringInt.length()) {
+                printThePoint();
+            }
+            i++;
+            k++;
+        }
+    }
+
+    private static int IncrementIAndPrintNumber(int i) {
+        printStringIntCharAt(i);
+        i++;
+        return i;
+    }
+
+    private static void printStringIntCharAt(int i) {
+        System.out.print(stringInt.charAt(i));
+    }
+
+    private static void printThePoint() {
+        System.out.print(",");
     }
 }
