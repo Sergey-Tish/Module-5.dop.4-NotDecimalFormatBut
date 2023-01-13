@@ -22,7 +22,6 @@ public class MyDecimalFormat {
     }
 
     public void printInFormat() {
-
         int i = 0;
         int k = 1;
         if (stringInt.length() % 3 == 1) {
