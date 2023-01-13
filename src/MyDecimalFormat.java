@@ -35,7 +35,7 @@ public class MyDecimalFormat {
         }
         while (i < stringInt.length()) {
             printStringIntCharAt(i);
-            if ((k) % 3 == 0 && (i+1) < stringInt.length()) {
+            if ((k) % 3 == 0 && (i + 1) < stringInt.length()) {
                 printThePoint();
             }
             i++;
